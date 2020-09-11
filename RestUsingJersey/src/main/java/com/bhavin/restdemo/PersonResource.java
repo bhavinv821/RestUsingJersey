@@ -4,11 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("person")
+@Path("users")
 public class PersonResource {
 
 	PersonRepository pr = new PersonRepository();
@@ -44,5 +46,22 @@ public class PersonResource {
 	public List<Person> getPerson() {
 	
 	    return pr.getAllUsers();
+	}
+	
+	@POST
+	@Path("user")
+	public Person createUser(Person p) {
+		System.out.println("dfdfdf\n\n\n\n\n");
+		pr.create(p);
+		
+		return p;
+	}
+	
+	@GET()
+	@Path("user/{id}")
+	@Produces(MediaType.APPLICATION_ATOM_XML)
+	public Person getUser(@PathParam("id") int id) {
+		
+		return pr.getPersonById(id);
 	}
 }

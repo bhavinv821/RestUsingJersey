@@ -37,4 +37,9 @@ public class PersonRepository {
 		}
 		return null;
 	}
+
+	public void create(Person p) {
+		// TODO Auto-generated method stub
+		
+	}
 }
